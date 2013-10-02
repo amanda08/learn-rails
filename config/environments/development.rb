@@ -25,5 +25,20 @@ LearnRails::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = def true
+  
+  # add setup for mail
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: ENV["DOMAIN_NAME"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+  }
+  # to be able to send real emails during dev mode:
+  config.action_mailer.perform_deliveries = true
+  end
+  
 end
