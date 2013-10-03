@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LearnRails</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Learning Rails" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Learning Rails" %>">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id = "container">
+		<header>
+			<%= render 'layouts/navigation' %>
+			<%= render 'layouts/messages' %>
+		</header>
+		<main role="main">
+			<%= yield %>
+		</main>
+		<footer>
+		</footer>
+	</div>
 </body>
 </html>
